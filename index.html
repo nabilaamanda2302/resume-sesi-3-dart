@@ -6,14 +6,21 @@
 <style>
 
 body{
-font-family: "Comic Sans MS", Arial;
+font-family:"Comic Sans MS", Arial;
 background: linear-gradient(#ffd6eb,#ffeaf5);
 margin:40px;
+overflow:hidden;
 }
 
 h1{
 text-align:center;
 color:#ff4fa3;
+}
+
+.header{
+text-align:center;
+font-weight:bold;
+margin-bottom:20px;
 }
 
 .container{
@@ -32,11 +39,30 @@ p{
 line-height:1.6;
 }
 
-.footer{
-text-align:center;
-margin-top:30px;
-color:#555;
-font-weight:bold;
+code{
+background:#ffe6f2;
+padding:6px;
+border-radius:6px;
+display:block;
+margin-top:8px;
+}
+
+.falling{
+position:fixed;
+top:-50px;
+font-size:24px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(0);
+opacity:1;
+}
+100%{
+transform:translateY(100vh);
+opacity:0;
+}
 }
 
 </style>
@@ -44,69 +70,127 @@ font-weight:bold;
 
 <body>
 
+<div class="header">
+<p>Nama : Nabila Amanda</p>
+<p>NIM : 251410023</p>
+<p>Kelas : SI 2A</p>
+</div>
+
 <h1>Resume Materi Sesi 3</h1>
 
 <div class="container">
 <h2>Constructor di Dart</h2>
 <p>
 Constructor adalah fungsi khusus dalam sebuah class yang digunakan untuk membuat objek.
-Dalam Dart terdapat beberapa jenis constructor yang dapat digunakan sesuai kebutuhan program.
+Constructor akan dipanggil otomatis ketika objek dibuat. Dalam Dart terdapat beberapa
+jenis constructor seperti default constructor, named constructor, dan constant constructor.
 </p>
+
+<code>
+class Mobil {
+String merk;
+
+Mobil(this.merk);
+}
+</code>
 </div>
 
 <div class="container">
 <h2>Named Constructor</h2>
 <p>
-Named constructor digunakan untuk membuat objek dengan cara yang berbeda dalam satu class.
-Dengan adanya named constructor, objek bisa dibuat dari berbagai sumber data seperti Map atau JSON.
+Named constructor digunakan agar sebuah class dapat memiliki lebih dari satu cara
+untuk membuat objek. Dengan named constructor kita bisa membuat objek dari berbagai
+sumber data seperti Map atau JSON.
 </p>
+
+<code>
+class Mahasiswa {
+String nama;
+int umur;
+
+Mahasiswa(this.nama, this.umur);
+
+Mahasiswa.dariMap(Map data)
+: nama = data['nama'],
+umur = data['umur'];
+}
+</code>
 </div>
 
 <div class="container">
 <h2>Constant Constructor</h2>
 <p>
-Constant constructor digunakan untuk membuat objek yang tidak dapat diubah (immutable).
-Semua field pada class harus menggunakan keyword <b>final</b>.
+Constant constructor digunakan untuk membuat objek yang tidak dapat diubah
+(immutable). Semua variabel dalam class harus menggunakan keyword final
+agar nilainya tidak bisa berubah setelah objek dibuat.
 </p>
-</div>
 
-<div class="container">
-<h2>Initializer List</h2>
-<p>
-Initializer list digunakan untuk menginisialisasi nilai variabel sebelum constructor dijalankan.
-Biasanya digunakan untuk field final atau untuk memproses nilai terlebih dahulu.
-</p>
+<code>
+class Titik {
+final int x;
+final int y;
+
+const Titik(this.x, this.y);
+}
+</code>
 </div>
 
 <div class="container">
 <h2>Enkapsulasi</h2>
 <p>
-Enkapsulasi adalah konsep dalam OOP yang digunakan untuk menyembunyikan data agar tidak dapat
-diakses langsung dari luar class. Tujuannya adalah menjaga keamanan dan mengontrol penggunaan data.
+Enkapsulasi adalah konsep dalam OOP yang digunakan untuk menyembunyikan data
+agar tidak bisa diakses secara langsung dari luar class. Di Dart variabel
+private biasanya ditandai dengan tanda underscore (_).
 </p>
+
+<code>
+class User {
+String _password;
+
+User(this._password);
+}
+</code>
 </div>
 
 <div class="container">
 <h2>Getter dan Setter</h2>
 <p>
-Getter digunakan untuk mengambil nilai dari variabel private, sedangkan setter digunakan
-untuk mengubah nilai variabel tersebut serta bisa menambahkan validasi data.
+Getter digunakan untuk mengambil nilai dari variabel private, sedangkan setter
+digunakan untuk mengubah nilai variabel tersebut. Dengan cara ini kita bisa
+mengontrol bagaimana data digunakan dalam program.
 </p>
+
+<code>
+class Produk {
+String _nama;
+
+String get nama => _nama;
+
+set nama(String value){
+_nama = value;
+}
+}
+</code>
 </div>
 
 <div class="container">
 <h2>Kesimpulan</h2>
 <p>
-Materi sesi 3 membahas berbagai jenis constructor dalam Dart serta konsep enkapsulasi
-yang membantu menjaga keamanan data dan mengontrol akses dalam program.
+Materi sesi 3 membahas berbagai jenis constructor dalam Dart serta konsep
+enkapsulasi yang bertujuan untuk menjaga keamanan data dalam program.
+Dengan menggunakan private field, getter, dan setter, data dalam program
+dapat lebih aman dan terkontrol.
 </p>
 </div>
 
-<div class="footer">
-<p>Nama : Nabila Amanda</p>
-<p>NIM : 251410023</p>
-<p>Kelas : SI 2A</p>
-</div>
+<!-- Animasi bunga dan love -->
+<div class="falling" style="left:10%; animation-duration:6s;">🌸</div>
+<div class="falling" style="left:20%; animation-duration:7s;">💗</div>
+<div class="falling" style="left:35%; animation-duration:5s;">🌸</div>
+<div class="falling" style="left:50%; animation-duration:8s;">💗</div>
+<div class="falling" style="left:65%; animation-duration:6s;">🌸</div>
+<div class="falling" style="left:80%; animation-duration:7s;">💗</div>
+<div class="falling" style="left:90%; animation-duration:5s;">🌸</div>
 
 </body>
 </html>
